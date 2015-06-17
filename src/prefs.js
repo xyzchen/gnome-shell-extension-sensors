@@ -26,7 +26,9 @@ const SensorsPrefsWidget = new GObject.Class({
 
     _init: function(params) {
         this.parent(params);
-        this.margin = this.row_spacing = this.column_spacing = 20;
+        this.margin = 10;
+        this.row_spacing = 10;
+        this.column_spacing = 20;
 
         this._settings = Convenience.getSettings();
 
@@ -38,6 +40,7 @@ const SensorsPrefsWidget = new GObject.Class({
         update_time.connect('value-changed', Lang.bind(this, this._onUpdateTimeChanged));
         this.attach(update_time, 1, 0, 1, 1);
 
+		//设置界面
         this.attach(new Gtk.Label({ label: _("Temperature unit") }), 0, 2, 1, 1);
         let centigradeRadio = new Gtk.RadioButton({ group: null, label: _("Centigrade"), valign: Gtk.Align.START });
         let fahrenheitRadio = new Gtk.RadioButton({ group: centigradeRadio, label: _("Fahrenheit"), valign: Gtk.Align.START });
